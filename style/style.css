@@ -1,518 +1,929 @@
-/* تنسيقات عامة وإعادة ضبط */
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Playfair+Display:wght@700&display=swap'); /* خط عربي احترافي وخط إضافي للعناوين */
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملف شخصي - محفظة أعمال</title>
+    <!-- استيراد الخطوط من Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* أنماط عامة وإعادة ضبط الأنماط الأساسية للمتصفح */
+        :root {
+            /* لوحة ألوان حديثة وأنيقة */
+            --primary-color: #FF69B4; /* Hot Pink */
+            --secondary-color: #1c1c3a; /* Deep Purple-Black */
+            --text-color: #f0f0f0; /* رمادي فاتح لسهولة القراءة */
+            --heading-color: #FF69B4; /* Hot Pink للعناوين */
+            --light-bg: #2b2b2b;
+            --dark-bg: #121212;
+            --border-radius: 8px;
+            --shadow-dark: 0 5px 20px rgba(0, 0, 0, 0.4);
+        }
 
-:root {
-    --primary-color: #DAA520; /* ذهبي (Goldenrod) */
-    --secondary-color: #1a1a1a; /* أسود داكن جداً */
-    --text-color: #f0f0f0; /* رمادي فاتح للنصوص */
-    --heading-color: #DAA520; /* الذهبي للعناوين */
-    --light-bg: #2b2b2b; /* رمادي داكن للخلفيات الخفيفة */
-    --dark-bg: #121212; /* أسود أعمق للخلفيات الداكنة */
-    --border-radius: 8px;
-    --shadow-dark: 0 5px 20px rgba(0, 0, 0, 0.4);
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background: var(--dark-bg); /* لون احتياطي للخلفية */
+            direction: rtl;
+            text-align: right;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
 
-body {
-    font-family: 'Cairo', sans-serif;
-    line-height: 1.7;
-    color: var(--text-color);
-    background-color: var(--dark-bg);
-    direction: rtl; /* لضمان اتجاه النص من اليمين لليسار */
-    text-align: right; /* لمحاذاة النص لليمين افتراضياً */
-    overflow-x: hidden; /* لمنع ظهور شريط التمرير الأفقي بسبب الأنيميشن */
-}
+        /* خلفية متحركة بلمسة جديدة */
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #4d1c5d 0%, #a40660 100%); /* تدرج لوني عصري بين الوردي والبنفسجي */
+        }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+        /* أشكال متحركة أكثر وضوحًا تتناسب مع الألوان الجديدة */
+        .animated-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 105, 180, 0.6); /* لون واضح من لوحة الألوان الأساسية */
+            filter: blur(10px); /* تمويه أقل لجعلها أوضح */
+            opacity: 0.8; /* شفافية أقل لجعلها أكثر وضوحاً */
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
 
-/* الأزرار العامة */
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1em;
-    transition: all 0.3s ease;
-    text-align: center;
-}
+        /* خصائص ورسوم متحركة لكل شكل */
+        .shape-1 {
+            width: 175px;
+            height: 175px;
+            top: 10%;
+            right: 15%;
+            animation: moveShape 15s infinite alternate;
+        }
+        .shape-2 {
+            width: 125px;
+            height: 125px;
+            bottom: 5%;
+            left: 20%;
+            animation: moveShape 12s infinite alternate-reverse;
+        }
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            top: 40%;
+            left: 5%;
+            animation: moveShape 18s infinite alternate;
+        }
+        .shape-4 {
+            width: 100px;
+            height: 100px;
+            bottom: 25%;
+            right: 10%;
+            animation: moveShape 14s infinite alternate;
+            animation-delay: 2s;
+        }
+        .shape-5 {
+            width: 150px;
+            height: 150px;
+            top: 30%;
+            right: 40%;
+            animation: moveShape 16s infinite alternate-reverse;
+            animation-delay: 4s;
+        }
+        .shape-6 {
+            width: 75px;
+            height: 75px;
+            top: 5%;
+            left: 50%;
+            animation: moveShape 10s infinite alternate;
+            animation-delay: 1s;
+        }
+        .shape-7 {
+            width: 90px;
+            height: 90px;
+            top: 60%;
+            right: 25%;
+            animation: moveShape 13s infinite alternate-reverse;
+            animation-delay: 3s;
+        }
+        .shape-8 {
+            width: 110px;
+            height: 110px;
+            bottom: 15%;
+            right: 40%;
+            animation: moveShape 17s infinite alternate;
+            animation-delay: 5s;
+        }
+        .shape-9 {
+            width: 130px;
+            height: 130px;
+            top: 20%;
+            left: 30%;
+            animation: moveShape 11s infinite alternate-reverse;
+        }
+        .shape-10 {
+            width: 160px;
+            height: 160px;
+            bottom: 40%;
+            left: 50%;
+            animation: moveShape 19s infinite alternate;
+            animation-delay: 6s;
+        }
+        .shape-11 {
+            width: 190px;
+            height: 190px;
+            top: 50%;
+            right: 5%;
+            animation: moveShape 14s infinite alternate;
+            animation-delay: 1s;
+        }
+        .shape-12 {
+            width: 220px;
+            height: 220px;
+            bottom: 10%;
+            left: 5%;
+            animation: moveShape 20s infinite alternate-reverse;
+            animation-delay: 4s;
+        }
 
-.btn-primary {
-    background-color: var(--primary-color);
-    color: var(--secondary-color); /* نص داكن على الزر الذهبي */
-    border: 2px solid var(--primary-color);
-}
+        /* Keyframes للرسوم المتحركة للأشكال */
+        @keyframes moveShape {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(75px, 40px) scale(1.1); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
 
-.btn-primary:hover {
-    background-color: transparent;
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
 
-/* الـ Header الرئيسي */
-.main-header {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    padding: 20px 0;
-    box-shadow: var(--shadow-dark);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+        /* أنماط الأزرار المحدثة */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
 
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; /* للسماح بالالتفاف على الشاشات الصغيرة */
-}
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: 2px solid var(--primary-color);
+        }
 
-.profile-area {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
 
-.profile-pic-container {
-    position: relative;
-    width: 90px; /* حجم الصورة الشخصية */
-    height: 90px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px; /* مساحة للشعاع */
-    box-shadow: 0 0 0 4px rgba(218, 165, 32, 0.3); /* إطار حول الحاوية */
-}
+        /* أنماط الهيدر مع تأثير Glassmorphism */
+        .main-header {
+            background: rgba(28, 28, 58, 0.5); /* خلفية شبه شفافة */
+            backdrop-filter: blur(20px);
+            color: var(--text-color);
+            padding: 20px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-.profile-pic-container img {
-    width: 80px; /* حجم الصورة الفعلية داخل الحاوية */
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    z-index: 2;
-    transition: transform 0.3s ease;
-}
+        .header-content {
+            display: flex;
+            justify-content: center; /* توسيط شريط التنقل */
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
-.profile-pic-container img:hover {
-    transform: scale(1.05);
-}
+        .main-header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px; /* مسافة بين العناصر */
+        }
+        
+        .main-header nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 5px;
+        }
 
-/* أنيميشن الشعاع حول الصورة الشخصية */
-.profile-pic-container::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    border: 3px solid transparent;
-    border-top-color: var(--primary-color);
-    border-right-color: var(--primary-color);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) rotate(0deg);
-    animation: spin 6s linear infinite;
-    z-index: 1;
-}
+        .main-header nav ul li a:hover {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
 
-@keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
+        /* أنماط الأقسام العامة */
+        section {
+            padding: 80px 0;
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
 
-.name-title h1 {
-    margin: 0;
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8em;
-    color: var(--primary-color);
-    line-height: 1;
-}
+        /* أنماط العنوان الجديد */
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2em;
+            color: var(--primary-color);
+            text-align: center;
+            margin: 0 auto 60px auto; /* توسيط الكتلة بشكل كامل */
+            width: fit-content; /* جعل العرض بحجم المحتوى فقط */
+            position: relative;
+            padding-bottom: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+        }
 
-.name-title p {
-    font-size: 1em;
-    opacity: 0.8;
-}
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 120px;
+            height: 5px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
 
-.main-header nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
+        /* قسم البداية (Hero) مع تأثير Glassmorphism */
+        .hero-section {
+            background: rgba(28, 28, 58, 0.4);
+            backdrop-filter: blur(15px);
+            color: #fff;
+            text-align: center;
+            padding: 120px 0;
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255, 105, 180, 0.3);
+        }
 
-.main-header nav ul li {
-    display: inline-block;
-    margin: 0 15px;
-}
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.main-header nav ul li a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: bold;
-    padding: 8px 12px;
-    border-radius: 5px;
-    transition: color 0.3s ease, background-color 0.3s ease;
-}
+        /* أنماط جديدة لمنطقة الملف الشخصي داخل قسم البداية */
+        .profile-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 40px;
+            animation: floatUpDown 6s ease-in-out infinite;
+        }
+        
+        .hero-title {
+            animation: floatUpDown 5s ease-in-out infinite reverse;
+        }
+        
+        /* Keyframes للحركة العائمة لأعلى ولأسفل */
+        @keyframes floatUpDown {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
 
-.main-header nav ul li a:hover {
-    color: var(--secondary-color);
-    background-color: var(--primary-color);
-}
+        .profile-pic-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 6px;
+            box-shadow: 0 0 0 4px rgba(255, 105, 180, 0.3);
+            margin-bottom: 20px;
+            z-index: 3;
+        }
 
-/* الأقسام العامة */
-section {
-    padding: 80px 0;
-    position: relative;
-}
+        .profile-pic-container img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
 
-h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.2em;
-    color: var(--primary-color);
-    text-align: center;
-    margin-bottom: 60px;
-    position: relative;
-    padding-bottom: 10px;
-}
+        .profile-pic-container img:hover {
+            transform: scale(1.05);
+        }
 
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    right: 50%;
-    transform: translateX(50%);
-    width: 120px;
-    height: 5px;
-    background-color: var(--primary-color);
-    border-radius: 3px;
-}
+        .profile-pic-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            border: 3px solid transparent;
+            border-top-color: var(--primary-color);
+            border-right-color: var(--primary-color);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            animation: spin 6s linear infinite;
+            z-index: 1;
+        }
 
-/* قسم الـ Hero (البطل) */
-.hero-section {
-    background: linear-gradient(to right, rgba(18,18,18,0.95), rgba(43,43,43,0.7)), url('images/hero-bg.jpg') no-repeat center center/cover;
-    color: #fff;
-    text-align: center;
-    padding: 120px 0;
-    min-height: 550px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid rgba(218, 165, 32, 0.3); /* خط فاصل ذهبي */
-}
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
 
-.hero-content h2 {
-    color: #fff;
-    font-size: 4.2em;
-    margin-bottom: 25px;
-    line-height: 1.2;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-}
+        /* أشكال عائمة جديدة خلف الصورة الشخصية */
+        .profile-floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 105, 180, 0.4);
+            filter: blur(20px);
+            opacity: 0.7;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            z-index: 2;
+        }
 
-.hero-content h2::after {
-    display: none;
-}
+        .profile-shape-1 {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            right: 10%;
+            animation: rotateMove 10s infinite linear;
+        }
 
-.hero-content p {
-    font-size: 1.5em;
-    margin-bottom: 40px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    opacity: 0.9;
-}
+        .profile-shape-2 {
+            width: 40px;
+            height: 40px;
+            bottom: 15%;
+            left: 25%;
+            animation: rotateMove 8s infinite linear reverse;
+        }
 
-/* قسم عني (About) */
-.about-section {
-    background-color: var(--dark-bg);
-}
+        @keyframes rotateMove {
+            0% { transform: rotate(0deg) translate(0, 0) scale(1); }
+            50% { transform: rotate(180deg) translate(20px, 15px) scale(1.1); }
+            100% { transform: rotate(360deg) translate(0, 0) scale(1); }
+        }
+        
+        .profile-floating-shape.pulse {
+            animation: pulse 3s infinite ease-in-out;
+        }
 
-.about-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center; /* توسيط المحتوى */
-    gap: 40px;
-}
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
 
-.about-text {
-    flex: 1; /* جعل النص يأخذ المساحة المتبقية */
-    max-width: 800px; /* تحديد أقصى عرض للنص */
-    text-align: right;
-}
+        .name-title h1 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            color: var(--primary-color);
+            line-height: 1;
+        }
 
-.about-text p {
-    font-size: 1.15em;
-    margin-bottom: 15px;
-    color: var(--text-color);
-}
+        .name-title p {
+            font-size: 1em;
+            opacity: 0.8;
+        }
 
-/* قسم أعمالي (Portfolio) */
-.portfolio-section {
-    background-color: var(--light-bg);
-    border-top: 1px solid rgba(218, 165, 32, 0.3);
-}
+        .followers-count {
+            font-size: 0.9em;
+            color: var(--primary-color);
+            margin-top: 5px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
 
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    justify-content: center;
-    align-items: stretch;
-}
+        /* محتوى قسم البداية */
+        .hero-title {
+            color: #fff;
+            font-size: 4.2em;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            right: auto;
+            transform: none;
+        }
 
-.portfolio-item {
-    background-color: var(--secondary-color);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--shadow-dark);
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    min-height: 350px; /* لضمان ارتفاع معقول للبطاقة */
-    border: 1px solid rgba(218, 165, 32, 0.1); /* إطار ذهبي خفيف */
-}
+        .hero-section .hero-title::after {
+            display: none;
+        }
 
-.portfolio-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-
-.portfolio-item:hover img {
-    transform: scale(1.05);
-    opacity: 0.8; /* تغميض الصورة قليلاً عند التحويم */
-}
-
-.item-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0));
-    color: #fff;
-    padding: 20px;
-    text-align: right;
-    z-index: 2;
-    transform: translateY(100%);
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    height: 100%;
-}
-
-.portfolio-item:hover .item-overlay {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.item-overlay h3 {
-    margin-top: auto;
-    font-size: 1.8em;
-    margin-bottom: 10px;
-    color: var(--primary-color);
-}
-
-.item-overlay p {
-    font-size: 1em;
-    margin-bottom: 15px;
-    color: #ccc;
-}
-
-.item-overlay .view-details-btn {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-size: 0.9em;
-    align-self: flex-end;
-}
-
-.item-overlay .view-details-btn:hover {
-    background-color: #C59300; /* لون ذهبي أغمق عند التحويم */
-}
-
-/* قسم التواصل (Contact) */
-.contact-section {
-    background-color: var(--dark-bg);
-    text-align: center;
-    border-top: 1px solid rgba(218, 165, 32, 0.3);
-}
-
-.contact-info {
-    margin-top: 40px;
-}
-
-.contact-info p {
-    font-size: 1.2em;
-    margin-bottom: 15px;
-    color: var(--text-color);
-}
-
-.contact-info a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.contact-info a:hover {
-    color: #C59300;
-}
-
-.social-links {
-    margin-top: 30px;
-}
-
-.social-links .social-icon {
-    display: inline-block;
-    width: 55px; /* حجم أكبر للأيقونات */
-    height: 55px;
-    margin: 0 15px;
-    border-radius: 50%;
-    background-color: var(--light-bg); /* خلفية داكنة للأيقونة */
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.social-links .social-icon img {
-    width: 32px; /* حجم أكبر لأيقونة الصورة */
-    height: 32px;
-    filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(218, 165, 32, 0.8)); /* لجعل الأيقونة ذهبية */
-}
-
-.social-links .social-icon:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(218, 165, 32, 0.4);
-}
-.social-links .social-icon:hover img {
-    filter: none; /* إزالة الفلتر عند التحويم إذا كانت الأيقونة الأصلية ملونة */
-}
+        .hero-section p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
 
 
-/* التذييل (Footer) */
-footer {
-    background-color: var(--secondary-color);
-    color: #a0a0a0;
-    text-align: center;
-    padding: 25px 0;
-    font-size: 0.9em;
-    border-top: 1px solid rgba(218, 165, 32, 0.2);
-}
+        /* قسم من أنا */
+        .about-section {
+            background-color: rgba(28, 28, 58, 0.4);
+        }
 
-/* استجابة التصميم (Responsive Design) */
-@media (max-width: 992px) {
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    .profile-area {
-        flex-direction: column;
-        margin-bottom: 20px;
-    }
-    .name-title h1 {
-        font-size: 2.2em;
-    }
-    .name-title p {
-        font-size: 0.9em;
-    }
-    .main-header nav {
-        width: 100%;
-    }
-    .main-header nav ul li {
-        margin: 0 10px;
-    }
-    .hero-content h2 {
-        font-size: 3.2em;
-    }
-    h2 {
-        font-size: 2.5em;
-    }
-}
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
 
-@media (max-width: 768px) {
-    .hero-content h2 {
-        font-size: 2.5em;
-    }
-    .hero-content p {
-        font-size: 1.2em;
-    }
-    h2 {
-        font-size: 2em;
-        margin-bottom: 40px;
-    }
-    section {
-        padding: 60px 0;
-    }
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-    }
-    .profile-pic-container {
-        width: 80px;
-        height: 80px;
-    }
-    .profile-pic-container img {
-        width: 70px;
-        height: 70px;
-    }
-    .name-title h1 {
-        font-size: 2em;
-    }
-}
+        .about-text {
+            flex: 1;
+            max-width: 800px;
+            text-align: right;
+        }
 
-@media (max-width: 480px) {
-    .profile-pic-container {
-        width: 70px;
-        height: 70px;
-    }
-    .profile-pic-container img {
-        width: 60px;
-        height: 60px;
-    }
-    .main-header nav ul li {
-        display: block;
-        margin: 8px 0;
-    }
-    .hero-content h2 {
-        font-size: 2em;
-    }
-    .hero-content p {
-        font-size: 1em;
-    }
-    .btn {
-        padding: 10px 20px;
-        font-size: 1em;
-    }
-    .social-links .social-icon {
-        width: 45px;
-        height: 45px;
-        margin: 0 10px;
-    }
-    .social-links .social-icon img {
-        width: 28px;
-        height: 28px;
-    }
-}
+        .about-text p {
+            font-size: 1.15em;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        /* قسم أعمالي */
+        .portfolio-section {
+            background-color: rgba(43, 43, 43, 0.4);
+            border-top: 1px solid rgba(255, 105, 180, 0.3);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .portfolio-item {
+            background-color: #1c1c3a; /* لون ثابت لإخفاء تأثير الخلفية الدوارة في المنتصف */
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-dark);
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 350px;
+            border: 1px solid rgba(255, 105, 180, 0.1);
+            animation: floatUpDownItem 5s ease-in-out infinite; /* حركة عائمة خفيفة */
+        }
+        
+        /* الخط المضيء الدوار */
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, var(--primary-color) 0%, transparent 15%, transparent 85%, var(--primary-color) 100%);
+            animation: rotateLine 4s linear infinite;
+            z-index: 0;
+            filter: blur(8px); /* تأثير توهج خفيف */
+        }
+
+        /* Keyframes للحركة العائمة للمربعات */
+        @keyframes floatUpDownItem {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Keyframes للخط الدوار */
+        @keyframes rotateLine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .portfolio-item img, .item-overlay {
+            position: relative;
+            z-index: 1; /* للتأكد من أن المحتوى فوق الخط الدوار */
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+
+        .item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0));
+            color: #fff;
+            padding: 20px;
+            text-align: right;
+            z-index: 2;
+            transform: translateY(100%);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
+        }
+
+        .portfolio-item:hover .item-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .item-overlay h3 {
+            margin-top: auto;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .item-overlay p {
+            font-size: 1em;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .item-overlay .view-details-btn {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            align-self: flex-end;
+        }
+
+        .item-overlay .view-details-btn:hover {
+            background-color: #C59300;
+        }
+
+        /* قسم التواصل */
+        .contact-section {
+            background-color: rgba(28, 28, 58, 0.4);
+            text-align: center;
+            border-top: 1px solid rgba(255, 105, 180, 0.3);
+        }
+
+        .contact-info {
+            margin-top: 40px;
+        }
+
+        .contact-info p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #ff99c4;
+        }
+
+        .social-links {
+            margin-top: 30px;
+        }
+
+        .social-links .social-icon {
+            display: inline-block;
+            width: 55px;
+            height: 55px;
+            margin: 0 15px;
+            border-radius: 50%;
+            background-color: rgba(43, 43, 43, 0.5);
+            backdrop-filter: blur(5px);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links .social-icon img {
+            width: 32px;
+            height: 32px;
+            filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(255, 105, 180, 0.8));
+        }
+
+        .social-links .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+        }
+        .social-links .social-icon:hover img {
+            filter: none;
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: rgba(28, 28, 58, 0.5);
+            color: #a0a0a0;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(255, 105, 180, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        /* التصميم المتجاوب */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile-area {
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+            .name-title h1 {
+                font-size: 2.2em;
+            }
+            .name-title p {
+                font-size: 0.9em;
+            }
+            .main-header nav {
+                width: 100%;
+            }
+            .main-header nav ul li {
+                margin: 0 10px;
+            }
+            .hero-content h2 {
+                font-size: 3.2em;
+            }
+            h2 {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h2 {
+                font-size: 2.5em;
+            }
+            .hero-content p {
+                font-size: 1.2em;
+            }
+            h2 {
+                font-size: 2em;
+                margin-bottom: 40px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .profile-pic-container {
+                width: 80px;
+                height: 80px;
+            }
+            .profile-pic-container img {
+                width: 70px;
+                height: 70px;
+            }
+            .name-title h1 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-pic-container {
+                width: 70px;
+                height: 70px;
+            }
+            .profile-pic-container img {
+                width: 60px;
+                height: 60px;
+            }
+            .main-header nav ul li {
+                display: block;
+                margin: 8px 0;
+            }
+            .hero-content h2 {
+                font-size: 2em;
+            }
+            .hero-content p {
+                font-size: 1em;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            .social-links .social-icon {
+                width: 45px;
+                height: 45px;
+                margin: 0 10px;
+            }
+            .social-links .social-icon img {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- الأشكال الخلفية المتحركة -->
+    <div class="animated-background">
+        <div class="animated-shape shape-1"></div>
+        <div class="animated-shape shape-2"></div>
+        <div class="animated-shape shape-3"></div>
+        <div class="animated-shape shape-4"></div>
+        <div class="animated-shape shape-5"></div>
+        <div class="animated-shape shape-6"></div>
+        <div class="animated-shape shape-7"></div>
+        <div class="animated-shape shape-8"></div>
+        <div class="animated-shape shape-9"></div>
+        <div class="animated-shape shape-10"></div>
+        <div class="animated-shape shape-11"></div>
+        <div class="animated-shape shape-12"></div>
+    </div>
+    
+    <!-- قسم الهيدر -->
+    <header class="main-header">
+        <div class="container header-content">
+            <nav>
+                <ul>
+                    <li><a href="#about">من أنا</a></li>
+                    <li><a href="#portfolio">أعمالي</a></li>
+                    <li><a href="#contact">تواصل</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- قسم البداية (Hero) -->
+    <section class="hero-section" id="home">
+        <div class="container hero-content">
+            <div class="profile-area">
+                <!-- الأشكال العائمة حول الصورة الشخصية -->
+                <div class="profile-floating-shape profile-shape-1"></div>
+                <div class="profile-floating-shape profile-shape-2 pulse"></div>
+                
+                <div class="profile-pic-container">
+                    <!-- ملاحظة: يمكنك استبدال صورة placeholder هذه بصورة شخصية حقيقية -->
+                    <img src="https://placehold.co/110x110/ff69b4/1c1c3a?text=صورة+شخصية" alt="صورة شخصية">
+                </div>
+                <div class="name-title">
+                    <h1>محمد العلي</h1>
+                    <p>مصمم منشورات السوشيال ميديا</p>
+                </div>
+                <p class="followers-count">12.5k متابع</p>
+            </div>
+            <h1 class="hero-title">مرحباً، أنا <br>مصمم مبدع لمنشورات السوشيال ميديا.</h1>
+            <p>أقدم حلولاً إبداعية لتصميم وتطوير منشورات السوشيال ميديا التي تجمع بين الجمال والوظيفة لتقديم تجربة مستخدم لا تُنسى.</p>
+            <a href="#portfolio" class="btn btn-primary">اكتشف أعمالي</a>
+        </div>
+    </section>
+
+    <!-- قسم من أنا -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2>من أنا</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>أنا محمد، مصمم شغوف بإنشاء محتوى مرئي جذاب وفريد لمنصات التواصل الاجتماعي. أمتلك خبرة واسعة في تصميم المنشورات، الإعلانات، القصص، وغيرها من الأصول الرقمية التي تساعد العلامات التجارية على النمو.</p>
+                    <p>أؤمن بأن التصميم الجيد هو أساس كل مشروع ناجح، وأحرص دائماً على أن يكون كل عمل أقوم به يجمع بين الجمال البصري والأداء القوي. أعمل بجد لتحويل الأفكار إلى واقع رقمي ملموس.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم أعمالي -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="container">
+            <h2>أعمالي</h2>
+            <div class="portfolio-grid">
+                <!-- عنصر أعمال 1 -->
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/300x350/2b2b2b/f0f0f0?text=مشروع+1" alt="مشروع تصميم واجهة">
+                    <div class="item-overlay">
+                        <h3>تصميم حملة إعلانية</h3>
+                        <p>تصميم سلسلة من الإعلانات المرئية لمنصة إلكترونية.</p>
+                        <a href="#" class="view-details-btn">عرض التفاصيل</a>
+                    </div>
+                </div>
+                <!-- عنصر أعمال 2 -->
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/300x350/2b2b2b/f0f0f0?text=مشروع+2" alt="مشروع تطوير موقع ويب">
+                    <div class="item-overlay">
+                        <h3>محتوى مرئي لحساب تجميل</h3>
+                        <p>تصميم محتوى جذاب لحساب تجميل على انستغرام.</p>
+                        <a href="#" class="view-details-btn">عرض التفاصيل</a>
+                    </div>
+                </div>
+                <!-- عنصر أعمال 3 -->
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/300x350/2b2b2b/f0f0f0?text=مشروع+3" alt="مشروع تصميم شعار">
+                    <div class="item-overlay">
+                        <h3>تصميم قوالب جاهزة</h3>
+                        <p>بناء مجموعة من القوالب المصممة للاستخدام اليومي.</p>
+                        <a href="#" class="view-details-btn">عرض التفاصيل</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التواصل -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>تواصل معي</h2>
+            <div class="contact-info">
+                <p>سعيد بتواصلك معي! يمكنك إرسال رسالة إلي على البريد الإلكتروني أو متابعتي على منصات التواصل الاجتماعي.</p>
+                <p>
+                    البريد الإلكتروني:
+                    <a href="mailto:your.email@example.com">your.email@example.com</a>
+                </p>
+                <p>
+                    الهاتف:
+                    <a href="tel:+1234567890">+123 456 7890</a>
+                </p>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-icon" aria-label="تويتر">
+                    <img src="https://placehold.co/32x32/1c1c3a/f0f0f0?text=X" alt="X icon">
+                </a>
+                <a href="#" class="social-icon" aria-label="لينكدإن">
+                    <img src="https://placehold.co/32x32/1c1c3a/f0f0f0?text=IN" alt="LinkedIn icon">
+                </a>
+                <a href="#" class="social-icon" aria-label="جيت هاب">
+                    <img src="https://placehold.co/32x32/1c1c3a/f0f0f0?text=GH" alt="GitHub icon">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 جميع الحقوق محفوظة. تم التصميم والتطوير بواسطة محمد العلي.</p>
+        </div>
+    </footer>
+    
+    <!-- سكريبت لجعل الصفحة تبدأ من الأعلى بعد انتهاء التحميل بفاصل زمني قصير -->
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+            }, 10);
+        };
+    </script>
+
+</body>
+</html>
